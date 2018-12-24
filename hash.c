@@ -18,7 +18,7 @@ int main(void)
     FILE *shadow;
     string user;
 
-    //it checks that an user has been written right
+    //it checks if a user has been typed in correctly
     do
     {
         n = 0;
@@ -66,7 +66,7 @@ int main(void)
     hash_password = crypt(key, salt);
     printf("%s\n", hash_password);
 
-    //we write our user and created the hash-password into file
+    //we write our user and created the hash-password into the file
     shadow = fopen("shadow.txt", "w");
     fprintf(shadow, "%s:%s", user, hash_password);
     fclose(shadow);
