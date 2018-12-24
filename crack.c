@@ -9,6 +9,7 @@
 
 int main(int argc, string argv[])
 {
+    //we check that one hash has been written
     if (argc != 2)
     {
         printf("Usage: ./crack hash \n");
@@ -16,22 +17,28 @@ int main(int argc, string argv[])
     }
     else
     {
+        //we create variables that we need
         char salt[3];
         string hash_1;
         hash_1 = argv[1];
+        //The function copies the first num characters from a string srcptr in line destptr.
         strncpy(salt, argv[1], sizeof(salt) - 1);
         string hash_check;
 
-
+        //we create string contained all letters of the alphabet (upper-case and lower-case letters)
         string all = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        //we allocate memory for our password
         char password[6];
 
+        //we search our password with brute force way
         //search the first letter
         for (int i = 0; i < strlen(all); i++)
         {
             password[0] = all[i];
             password[1] = '\0';
+            //crypt() is the library function which is used to compute a password hash (we get with unistd.h and _XOPEN_SOURCE)
             hash_check = crypt(password, salt);
+            //This feature compares the characters of two strings, string1 and string2.
             if (strcmp(hash_1, hash_check) == 0)
             {
                 printf("%s\n", password);
@@ -131,6 +138,8 @@ int main(int argc, string argv[])
             }
         }
     }
+    //we will create a message, if we fail in object
     printf("Your hash is not correct!\n");
     return 1;
 }
+
