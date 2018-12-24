@@ -9,7 +9,7 @@
 
 int main(int argc, string argv[])
 {
-    //we check that one hash has been written
+    //we check if a hash has been typed in correctly
     if (argc != 2)
     {
         printf("Usage: ./crack hash \n");
