@@ -77,7 +77,7 @@ int main(int argc, string argv[])
             }
         }
 
-        ////search the fourth letter
+        //search the fourth letter
         for (int i = 0; i < strlen(all); i++)
         {
             password[0] = all[i];
