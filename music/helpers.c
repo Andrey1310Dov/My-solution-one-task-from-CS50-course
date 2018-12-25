@@ -7,7 +7,8 @@
 #include "helpers.h"
 
 int frequency(string note)
-{
+{   
+    //we create variables that we need
     float f_1;
     int f;
     float n;
@@ -234,17 +235,20 @@ int frequency(string note)
             }
         }
     }
-
+    //function pow raises the value basis a power exponent:
     f_1 = pow(2, n / 12);
+    //get frequency 
     f_1 = f_1 * 440;
     f = round(f_1);
     return f;
 }
 
 int duration(string fraction)
-{
+{   
+    //we create variables that we need
     int durations;
     int i = strlen(fraction);
+    //we get numbger of 1/8's notes
     if (fraction[i - 1] == 56)
     {
         durations = fraction[i - 3] - 48;
@@ -274,9 +278,12 @@ int duration(string fraction)
 
 
 bool is_rest(string s)
-{
+{  
+    //An absence of a note (i.e., silence) is considered a rest, the duration of which is also implied by its shape.
+    //we get rest (blank lines in .txt represent rests in our machine-readable format 
     string b;
     b = "";
+    //the function strncmp()compares the first num character string string1 with first num character string string2
     if (strncmp(s, b, 1) == 0)
     {
         return true;
